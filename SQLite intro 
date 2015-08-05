@@ -1,0 +1,40 @@
+# How to use SQLite on Mac
+# SQLite in pre-installed on Mac, so we actually don't even have to download it ! 
+
+1. open terminal window
+
+2. navigate to a directory of your choice 
+	(pwd: output the path of current working directory
+	 ls: view files in the directory)
+	 
+3. make a new folder in the chosen directory
+	$ mkdir sqlite
+	
+4. create a new database 
+	$ sqlite3 test.db
+	SQLite version 3.7.13 2012-07-17 17:46:21
+	Enter ".help" for instructions
+	Enter SQL statements terminated with a ";"
+	sqlite> 
+	
+5. now you are in the database test.db, lets try to create a new table called first with two column a and b 
+	sqlite> create table first (a int, b string); 
+	
+6. Let's check the structure of the table 
+	sqlite> .schema
+	CREATE TABLE first (a int, b string);
+	
+7. now we can add values into the table first
+	sqlite> insert into first (a, b) values (1, "hello");
+	
+8. we can view data by doing
+	sqlite> select * from first;
+	1|hello
+	
+9. To quit sqlite
+	sqlite> .quit
+	
+10. Now you are back to the sqlite folder, we can check if the test.db is there. 
+	$ls 
+	test.db
+	
