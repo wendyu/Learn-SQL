@@ -1,0 +1,42 @@
+Create/drop Table basic operations:
+
+1. CREATE TABLE: make a new table
+CREATE TABLE t_test
+ (a INTEGER PRIMARY KEY
+ ,b VARCHAR(10)
+ )
+ 
+2. DROP TABLE: delect an unwanted table
+ DROP TABLE t_test
+ 
+3. CREATE VIEW: make a table from select statement 
+ CREATE VIEW v_europe AS
+ SELECT name,
+        population AS pop
+  FROM world 
+  WHERE region='Europe';
+  
+4. AUTO_INCREMENT: create ID/primary key field. The number increases automatically every time a new record is inseted. 
+CREATE TABLE t_test(
+ id INTEGER AUTO_INCREMENT PRIMARY KEY,
+ name VARCHAR(10)
+ );
+
+5. ALTER TABLE... ADD COLUMN: add new column to a existing table
+ALTER TABLE a ADD COLUMN z INTEGER;
+SELECT * FROM a;
+
+6. ALTER TABLE... DROP COLUMN: drop new column to a existing table
+ALTER TABLE a DROP COLUMN y;
+SELECT * FROM a;
+
+7. ALTER TABLE... CHANGE: rename column name
+CREATE TABLE a(x INTEGER);
+INSERT INTO a VALUES (2);
+ 
+ALTER TABLE a CHANGE x y INTEGER;
+SELECT * FROM a
+
+
+
+ 
