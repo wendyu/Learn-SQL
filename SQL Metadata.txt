@@ -1,0 +1,22 @@
+Metadata: understanding database.  
+
+1. SHOW TABLES: get a list of all tables in the database. 
+SHOW TABLES
+
+2. SHOW COLUMNS FROM tb: get column syntax in a table. 
+   DESCRIBE tb: same as the above command. get table syntax. 
+SHOW COLUMNS FROM bbc
+DESCRIBE bbc
+
+3. LIMIT(N, M): select Nth row to(N+M)th row in a table. 
+SELECT * FROM bbc LIMIT 10 #returns first 10 rows.
+SELECT * FROM bbc LIMIT 11, 10 #return 11th to 20th rows. 
+
+4. version(): returns the version of SQL being used
+SELECT version()
+
+5. PRIMARY KEY: set primary keys that constraint inuquely identified record. No NULL is allowed. 
+CREATE TABLE casting(movieid INTEGER,
+                    actorid INTEGER,
+                    PRIMARY KEY (movieid, actorid)
+                    )
