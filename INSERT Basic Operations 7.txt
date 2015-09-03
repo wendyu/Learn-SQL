@@ -1,0 +1,22 @@
+INSERT/DELETE basic operation: 
+
+1. INSERT INTO table: add new records to a table
+INSERT INTO t_peep VALUES (1, 'andrew');
+INSERT INTO t_peep VALUES (2, 'gordon');
+SELECT * FROM t_peep
+
+2. INSERT INTO...SELECT: copies data from one table and add to another table
+INSERT INTO t_peep
+ SELECT population, name FROM cia
+  WHERE region='Europe';
+
+3. UPDATE: change existing records
+UPDATE t_peep
+  SET name = 'andy', id=39
+  WHERE id=1;
+SELECT * FROM t_peep
+
+4. DELETE FROM table: remove existing records
+DELETE FROM t_peep
+ WHERE id=2;
+SELECT * FROM t_peep
