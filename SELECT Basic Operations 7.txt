@@ -1,0 +1,70 @@
+Select Operation, Basic functions
+
+1.CONCAT: concatenate two or more strings together.
+SELECT CONCAT(region, name)
+  FROM bbc
+ 
+2. LIKE: match strings containing a specific character/pattern. We can use wild card "%".
+SELECT name FROM bbc
+WHERE name LIKE 'Z%'
+
+3. Union: Combine multiple tables into one. Similar to rbind in R. Must have same number of columns. 
+SELECT name FROM bbc WHERE name LIKE 'Z%'
+UNION
+SELECT name FROM actor WHERE name LIKE 'Z%'
+
+4. Null: indcateing missing data. We can use IS NULL to select missing values 
+SELECT name,gdp
+FROM world
+WHERE gdp IS NULL
+
+5. SUBSTRING: extracting part of a string. substring(string from [positiong 1] for [number of characters extracting])
+SELECT name, SUBSTRING(name FROM 1 FOR 2) #from position 1(the begining) and take 2 characters. 
+ FROM bbc
+ 
+6. LOWER: change to lower case; UPPER: change to upper chase
+SELECT LOWER(name) FROM bbc
+ WHERE UPPER(region)='SOUTH AMERICA'
+ 
+7. INSTR(string, 'pattern'): give the location of subtring in a string.
+   POSITION('pattern' IN string): same as INSTR. 
+SELECT name,
+       INSTR(name, ' '),
+       POSITION(' ' IN name),
+       SUBSTRING(name FROM 1 FOR POSITION(' ' IN name))
+  FROM bbc
+  WHERE name LIKE '% %'
+
+8. ROUND: round numnbers to a specified decimal point.
+SELECT name,
+   population,
+   ROUND(population/1000000,2),
+   FORMAT(population/1000000,3),
+   ROUND(population,-7)
+  FROM bbc
+  WHERE region='North America'
+
+ 9. COALESCE: return the first value that is NOT NULL. Returns NULL is all values are null. 
+ SELECT code, name,
+    COALESCE(leader, 'NO LEADER RECORDED!')
+  FROM party
+
+ 10. CASE WHEN condition THEN retuen_value: return specified values under different conditions.
+ SELECT
+   title, 
+   score,
+   CASE WHEN score>8.5 THEN 'Excellent'
+        ELSE 'OK'
+   END
+   FROM movie
+   WHERE 10>id
+
+11. CURRENT_TIMESTAMP: retuns yyyy-mm-dd hr:min:sec
+    CURRENT_DATE: returns yyyy-mm-dd
+SELECT CURRENT_DATE, CURRENT_TIMESTAMP,wk
+  FROM totp
+
+12. DATE_FORMAT(date, format): display date and time in a specified format. 
+SELECT DATE_FORMAT(wk,'%d/%m/%Y'), song
+FROM totp
+WHERE singer='Tom Jones'
